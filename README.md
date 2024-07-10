@@ -16,7 +16,7 @@ one
 └── two
 ```
 
-Crate `two` contains the bindgen tests.
+Crate `two` contains bindings tests (`uniffi::build_foreign_language_testcases`)
 
 ## Tests
 
@@ -54,4 +54,14 @@ Then, standing in project root, run:
 
 ```sh
 direnv allow .
+```
+
+# Design
+
+Crate `one` exports a Rust struct using `uniffi::Record` which is then "imported"
+in crate `two`'s udl file like so:
+
+```webudl
+[ExternalExport="one"]
+typedef extern One;
 ```
